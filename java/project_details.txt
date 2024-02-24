@@ -1,0 +1,4 @@
+Project ID,Project Name,Start Date,End Date,Amount Funded,Project Field,Collaborators
+1,Research Project A,2023-01-01,2023-12-31,10000,Science,John Doe|Jane Smith
+2,Development Project B,2024-03-15,2024-12-31,15000,Technology,Bob Johnson|Alice Brown|Emily Davis
+3,Experimental Study C,2024-05-01,2025-04-30,20000,Engineering,Michael Wilson|Sarah Clark
