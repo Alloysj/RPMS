@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>update details</h1>
-        <form action="funderProfile.jsp">
+        <form action="funders.jsp">
             <input type="hidden" name="funderID" value="<%= request.getParameter("funderID") %>">
         <table>
             <tr>
@@ -27,14 +27,14 @@
             </tr>
             <tr>
                 <td>Status:</td>
-                <td><select name="funderStatus" size="1" value="<%= request.getParameter("funderStatus") %>" required>
+                <td><select name="status" size="1" value="<%= request.getParameter("funderStatus") %>" required>
                         <option>Active</option>
                         <option>Not active</option>
                     </select></td>
             </tr>
             <tr>
                 <td>Project name:</td>
-                <td><input type="text" name="projectName" value="<%= request.getParameter("projectName") %>" required></td>
+                <td><input type="text" name="project" value="<%= request.getParameter("projectName") %>" required></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="Update"></td>

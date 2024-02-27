@@ -1,13 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Funders</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>EEMS</title>
+        <link rel="stylesheet" href="researcher.css"/>
+    </head>
+    <body>
+        <%@ include file="header.jsp" %>
+        <h1>Researchers</h1>
     <h1>Funders Information</h1>
+    <%
+              String name = request.getParameter ("name");
+              String project = request.getParameter ("project");
+              String amountFunding = request.getParameter ("amountFunding");
+              String funderID = request.getParameter ("projectFunder");
+              String funderCountry = request.getParameter ("funderCountry");
+              String status = request.getParameter ("status");
+                
+        %> 
 
     <table border="1">
         <thead>
@@ -22,12 +33,12 @@
         </thead>
         <tbody>
             <tr>
-                <td><%= funderHandler.getName() %></td>
-                <td><%= funderHandler.getProject() %></td>
-                <td><%= funderHandler.getFunderID() %></td>
-                <td><%= funderHandler.getFunderCountry() %></td>
-                <td><%= funderHandler.getStatus() %></td>
-                <td><%= funderHandler.getTotalFund() %></td>
+                <td><%= name %></td>
+                <td><%= project %></td>
+                <td><%= funderID %></td>
+                <td><%= funderCountry %></td>
+                <td><%= status %></td>
+                <td><%= amountFunding %></td>
             </tr>
         </tbody>
     </table>

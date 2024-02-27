@@ -7,9 +7,8 @@
     <<link rel="stylesheet" href="researcher.css"/>
 </head>
 <body>
-    <h1>Update Project Details</h1>
 
-    <form action="researcherLoggedin.jsp" method="post">
+    <form action="projects.jsp" method="post">
         <input type="hidden" name="projectId" value="<%= request.getParameter("projectId") %>">
         <table>
             <tr>
@@ -30,7 +29,7 @@
             </tr>
             <tr>
                 <td>Project endDate:</td>
-                <td><input type="date" name="projectStartDate" value="<%= request.getParameter("projectEndDate") %>" required></td>
+                <td><input type="date" name="projectEndDate" value="<%= request.getParameter("projectEndDate") %>" required></td>
             </tr>
             <tr>
                 <td>Project area:</td>

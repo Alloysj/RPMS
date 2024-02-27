@@ -21,29 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                 <%
-                     String updatedName = request.getParameter("name");
-                String updatedProjectName = request.getParameter("projectName");
-                String updatedFunderCountry = request.getParameter("funderCountry");
-                String updatedFunderStatus = request.getParameter("funderStatus");
-                String updatedAmountFunding = request.getParameter("amountFunding");
-                
-                    // Update the project details in the table
-                    // Replace this part with your actual database update logic
-                    // This is just a placeholder
-                    if (updatedName != null) {
-                        // Update the project details in the table
-                        // For demonstration, we are just printing the updated values
-                        out.println("<tr>");
-                        out.println("<td>" + updatedName + "</td>");
-                        out.println("<td>" + updatedProjectName + "</td>");
-                        out.println("<td>" + updatedFunderCountry + "</td>");
-                        out.println("<td>" + updatedFunderStatus + "</td>");
-                        out.println("<td>" + updatedAmountFunding + "</td>");
-                        out.println("<td><a href=\"updateFunder.jsp?funderID=100\">Update</a></td>");
-                        out.println("</tr>");
-                    }
-                %>
+                 
                 <tr>
                     <td>400</td>
                     <td>USAID</td>
@@ -52,7 +30,7 @@
                     <td>Active</td>
                     <td>300,000</td>
                     <td>
-                        <a href="updateFunder.jsp?funderId=100">Update</a>
+                        <a href="updateFunder.jsp?funderId=400">Update</a>
                     </td>
                 </tr>
             </tbody>

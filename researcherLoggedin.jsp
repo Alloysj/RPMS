@@ -35,12 +35,9 @@
                 String updatedProjectArea = request.getParameter("projectArea");
                 String updatedProjectFunder = request.getParameter("projectFunder");
                 
-                // Update the project details in the table
-                // Replace this part with your actual database update logic
-                // This is just a placeholder
+                
                 if (updatedProjectId != null) {
                     // Update the project details in the table
-                    // For demonstration, we are just printing the updated values
                     out.println("<tr>");
                     out.println("<td>" + updatedProjectId + "</td>");
                     out.println("<td>" + updatedProjectName + "</td>");
@@ -66,19 +63,41 @@
                 </td>
             </tr>
         </tbody>
+        
+        <%
+        
+               
+                String expense = request.getParameter("expense");
+                String expenseAmt = request.getParameter("expenseAmt");
+        %>
     </table>
+     
+            <table border="1" cellpadding="2">
+                <thead>
+                    <tr>
+                        <th>Expense name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= expense%></td>
+                        <td><%= expenseAmt %></td>
+                    </tr>
+                </tbody>
+            </table>
 
     <h2>Enter Project Expenses</h2>
-    <form action="AddExpenseServlet" method="post">
+    <form action="researcherLoggedin.jsp" method="post">
         <input type="hidden" name="projectId" value="100">
         <table>
             <tr>
                 <td>Expense Name:</td>
-                <td><input type="text" name="expenseName" required></td>
+                <td><input type="text" name="expense" required></td>
             </tr>
             <tr>
                 <td>Amount:</td>
-                <td><input type="number" name="expenseAmount" required></td>
+                <td><input type="number" name="expenseAmt" required></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="Add Expense"></td>
