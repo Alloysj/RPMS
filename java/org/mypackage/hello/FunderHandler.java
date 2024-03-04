@@ -1,4 +1,3 @@
-
 package org.mypackage.hello;
 
 /**
@@ -6,103 +5,64 @@ package org.mypackage.hello;
  * @author user
  */
 public class FunderHandler {
+    private String funderId;
     private String name;
-    private String projectName;
-    private int funderID;
-    private String funderCountry;
     private String status;
-    private int totalFund;
+    private String country;
+    private String totalFunds;
     
     public FunderHandler(){
-        name=null;
-        projectName=null;
-        funderID = 200;
-        funderCountry = null;
-        status = "active";
-        totalFund= 30000;
+        funderId = "";
+        name = "";
+        status = "";
+        country = "";
+        totalFunds = "";
     }
-
-    /**
-     * @return the Name
-     */
-    public String getName() {
-        return name;
+    
+    public FunderHandler(String funderId, String name, String status, String country, String totalFunds){
+        this.funderId = funderId;
+        this.name = name;
+        this.status = status;
+        this.country = country;
+        this.totalFunds = totalFunds;
     }
-
-    /**
-     * @param name the fName to set
-     */
-    public void setName(String name) {
+    
+    public void setFunderID(String funderId){
+        this.funderId = funderId;
+    }
+    
+    public String getFunderID(){
+        return funderId;
+    }
+    
+    public void setName(String name){
         this.name = name;
     }
-
-    /**
-     * @return the project
-     */
-    public String getProjectName() {
-        return projectName;
+    
+    public String getName(){
+        return name;
     }
-
-    /**
-     * @param projectName the project to set
-     */
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    /**
-     * @return the funderID
-     */
-    public int getFunderID() {
-        return funderID;
-    }
-
-    /**
-     * @param funderID the funderID to set
-     */
-    public void setFunderID(int funderID) {
-        this.funderID = funderID;
-    }
-
-    /**
-     * @return the funderCountry
-     */
-    public String getFunderCountry() {
-        return funderCountry;
-    }
-
-    /**
-     * @param funderCountry the funderCountry to set
-     */
-    public void setFunderCountry(String funderCountry) {
-        this.funderCountry = funderCountry;
-    }
-
-    /**
-     * @return the status
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(String status) {
+    
+    public void setStatus(String status){
         this.status = status;
     }
-
-    /**
-     * @return the totalFund
-     */
-    public int getTotalFund() {
-        return totalFund;
+    
+    public String getStatus(){
+        return status;
     }
-
-    /**
-     * @param totalFund the totalFund to set
-     */
-    public void setTotalFund(int totalFund) {
-        this.totalFund = totalFund;
+    public void setCountry(String country){
+        this.country = country;
     }
+    
+    public String getCountry(){
+        return country;
+    }
+    public void setTotalFunds(String totalFunds){
+        this.totalFunds = totalFunds;
+    }
+    
+    public String getTotalFunds(){
+        return totalFunds;
+    }
+    
 }

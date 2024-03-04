@@ -9,7 +9,7 @@
 <body>
     <h1>Welcome, researcher 31450</h1>
     
-    <a href="updateProfile.jsp">view and update your profile</a>
+    <a href="editResearcher.jsp?researcherId=101">view and update your profile</a>
     <h2>Your Project</h2>
     <table border="1">
         <thead>

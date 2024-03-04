@@ -9,11 +9,6 @@
            /* Define the mixin */
         
         /* Use the mixin */
-        .circle-container {
-            @include on-circle(5, 300px, 250px);
-            margin: 5em auto 0;
-            border: solid 5px tomato;
-        }
         
         .circle-container img {
             display: block;
