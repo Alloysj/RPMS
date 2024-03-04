@@ -6,23 +6,30 @@
         <title>Research Management Profile System</title>
         <link rel="stylesheet" href="researcher.css">
         <style>
-           /* Define the mixin */
-        
-        /* Use the mixin */
-        
-        .circle-container img {
-            display: block;
-            max-width: 100%;
-            border-radius: 50%;
-            filter: grayscale(100%);
-            border: solid 5px tomato;
-            transition: 0.15s;
-        }
-        
-        .circle-container img:hover,
-        .circle-container img:active {
-            filter: grayscale(0);
-        }
+           .circle-container {
+                display: flex;
+                flex-wrap: wrap; 
+                justify-content: space-between;
+                align-items: center; 
+                max-width: 800px; 
+                margin: 0 auto; 
+            }
+
+            
+            .circle-container li {
+                justify-items: left;
+                width: 50%; 
+                padding: 10px; 
+                box-sizing: border-box; 
+                border: 4px solid green;
+            }
+
+            
+            .circle-container img {
+                max-width: 100%; 
+                height: auto; 
+                display: block; 
+            }
         </style>
     </head>
     <body>
