@@ -23,8 +23,6 @@
     <h1>Funder Information</h1>
 
     <form method="post" action="FundersServlet">
-        <label for="funderId">FunderID:</label>
-        <input type="number" id="funderId" name="funderId"><br><br>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
         <label for="status">Status:</label>
@@ -40,7 +38,6 @@
     <table>
         <thead>
             <tr>
-                <th>Funder ID</th>
                 <th>Name</th>
                 <th>Status</th>
                 <th>Country</th>
@@ -56,7 +53,6 @@
           while (funderList.next()) {
       %>
       <tr>
-        <td><%= funderList.getString("funderId") %></td>
         <td><%= funderList.getString("name") %></td>
         <td><%= funderList.getString("status") %></td>
         <td><%= funderList.getString("country") %></td>

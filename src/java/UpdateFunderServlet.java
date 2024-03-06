@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,36 +13,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Everlyne
- */
-@WebServlet(urlPatterns = {"/UpdateResearcherServlet"})
-public class UpdateResearcherServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         // JDBC URL and database credentials
+@WebServlet("/UpdateFunderServlet")
+public class UpdateFunderServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // JDBC URL and database credentials
         String jdbcUrl = "jdbc:mysql://localhost/rpms";
         String username = "root";
-        String password = "";
+        String password = "admin";
 
         // Get parameters from the request
-        String researcherId = request.getParameter("researcherId");
-        String fName = request.getParameter("fName");
-        String lName = request.getParameter("lName");
-        String project = request.getParameter("project");
-        String department = request.getParameter("department");
-        String faculty = request.getParameter("faculty");
+        String funderId = request.getParameter("funderId");
+        String name = request.getParameter("name");
+        String status = request.getParameter("status");
+        String country = request.getParameter("country");
+        String totalFunds = request.getParameter("totalFunds");
 
         Connection connection = null;
         PreparedStatement statement = null;
@@ -51,14 +37,13 @@ public class UpdateResearcherServlet extends HttpServlet {
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Prepare the SQL query (UPDATE statement)
-            String updateSql = "UPDATE researchers SET fName=?, lName=?, project=?, department=?, faculty=? WHERE funderId=?";
+            String updateSql = "UPDATE funders SET name=?, status=?, country=?, totalFunds=? WHERE funderId=?";
             statement = connection.prepareStatement(updateSql);
-            statement.setString(1, fName);
-            statement.setString(2, lName);
-            statement.setString(3, project);
-            statement.setString(4, department);
-            statement.setString(5, researcherId);
-            statement.setString(6, faculty);
+            statement.setString(1, name);
+            statement.setString(2, status);
+            statement.setString(3, country);
+            statement.setString(4, totalFunds);
+            statement.setString(5, funderId);
 
             // Execute the UPDATE statement
             int rowsAffected = statement.executeUpdate();
@@ -66,26 +51,26 @@ public class UpdateResearcherServlet extends HttpServlet {
             // Check if any rows were affected
             if (rowsAffected > 0) {
                 // Prepare a separate SELECT query to fetch and display records
-                String selectSql = "SELECT * FROM researchers";
+                String selectSql = "SELECT * FROM funders";
                 try (PreparedStatement selectStatement = connection.prepareStatement(selectSql)) {
                     // Execute the SELECT query
                     ResultSet updatedResultSet = selectStatement.executeQuery();
 
                     // Store the updated data in request attributes for JSP access
-                    request.setAttribute("researcherList", updatedResultSet); // Updated list of funders data
+                    request.setAttribute("funderList", updatedResultSet); // Updated list of funders data
                     request.setAttribute("message", "Record updated successfully!"); // Success message
 
                     // Forward request to funders.jsp for display
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/researchers.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/funders.jsp");
                     dispatcher.forward(request, response);
                 } catch (SQLException e) {
                     // Handle SQL exception
                     e.printStackTrace();
-                    response.sendRedirect("researchers.jsp?message=Failed+to+fetch+updated+data");
+                    response.sendRedirect("funders.jsp?message=Failed+to+fetch+updated+data");
                 }
             } else {
                 // Redirect back to funders.jsp with a failure message
-                response.sendRedirect("researchers.jsp?message=Failed+to+update+record");
+                response.sendRedirect("funders.jsp?message=Failed+to+update+record");
             }
         } catch (SQLException e) {
             // Handle SQL exception

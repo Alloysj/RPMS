@@ -8,14 +8,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Funder Information</title>
+    <title>Edit Collaborator Information</title>
     <link rel="stylesheet" href="researcher.css"/>
 </head>
 <body>
-    <h1>Edit Funder Information</h1>
+    <h1>Edit Collaborator Information</h1>
     <%
-        // Get the funderId parameter from the request
-        String funderId = request.getParameter("funderId");
+         // Get the funderId parameter from the request
+        String collaboratorId = request.getParameter("collaboratorId");
         
         // JDBC URL and database credentials
         String jdbcUrl = "jdbc:mysql://localhost/rpms";
@@ -35,9 +35,9 @@
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Prepare SQL statement to select the funder information by ID
-            String sql = "SELECT * FROM funders WHERE funderId=?";
+            String sql = "SELECT * FROM collaborators WHERE collaboratorId=?";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, funderId);
+            statement.setString(1, collaboratorId);
 
             // Execute the query
             resultSet = statement.executeQuery();
@@ -45,30 +45,27 @@
             // Check if a record with the given ID exists
             if (resultSet.next()) {
                 // Retrieve funder information
-                String name = resultSet.getString("name");
-                String status = resultSet.getString("status");
-                String country = resultSet.getString("country");
-                String totalFunds = resultSet.getString("totalFunds");
+                String fName = resultSet.getString("fName");
+                String lName = resultSet.getString("lName");
+                String project = resultSet.getString("project");
 
                 // Display a form to edit funder information
     %>
-                <form method="post" action="UpdateFunderServlet">
-                    <input type="hidden" name="funderId" value="<%= funderId %>">
-                    <label>Name:</label><br>
-                    <input type="text" name="name" value="<%= name %>"><br>
-                    <label>Status:</label><br>
-                    <input type="text" name="status" value="<%= status %>"><br>
-                    <label>Country:</label><br>
-                    <input type="text" name="country" value="<%= country %>"><br>
-                    <label>Total Funds:</label><br>
-                    <input type="text" name="totalFunds" value="<%= totalFunds %>"><br>
+    <form method="post" action="UpdateCollaboratorServlet">
+                    <input type="hidden" name="collaboratorId" value="<%= collaboratorId  %>">
+                    <label>First Name:</label><br>
+                    <input type="text" name="fName" value="<%= fName %>"><br>
+                    <label>Last Name:</label><br>
+                    <input type="text" name="lName" value="<%= lName %>"><br>
+                    <label>Project:</label><br>
+                    <input type="text" name="project" value="<%= project %>"><br>
                     <input type="submit" value="Update">
                 </form>
     <%
             } else {
                 // Display error message if no record found with the given ID
     %>
-                <p>No funder found with ID <%= funderId %>.</p>
+                <p>No collaborator found with ID <%= collaboratorId %>.</p>
     <%
             }
         } catch (Exception e) {
@@ -85,14 +82,14 @@
         }
     %>
     <br>
-    <a href="funders.jsp">Back to Home</a>
+    <a href="collaborators.jsp">Back to Home</a>
     
     <%-- Scriptlet to handle redirection after successful update --%>
     <%
         // Check if the request parameter 'updated' is present
         if (request.getParameter("updated") != null) {
             // Redirect back to funders.jsp after successful update
-            response.sendRedirect("funders.jsp");
+            response.sendRedirect("collaborators.jsp");
         }
     %>
 </body>

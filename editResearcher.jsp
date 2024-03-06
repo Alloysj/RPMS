@@ -8,19 +8,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Funder Information</title>
+    <title>Edit Researcher Information</title>
     <link rel="stylesheet" href="researcher.css"/>
 </head>
 <body>
-    <h1>Edit Funder Information</h1>
+    <h1>Edit Researcher Information</h1>
     <%
         // Get the funderId parameter from the request
-        String funderId = request.getParameter("researcherId");
+        String researcherId = request.getParameter("researcherId");
         
         // JDBC URL and database credentials
         String jdbcUrl = "jdbc:mysql://localhost/rpms";
         String username = "root";
-        String password = "";
+        String password = "admin";
 
         // Connection, PreparedStatement, and ResultSet objects
         Connection connection = null;
@@ -54,7 +54,7 @@
                 // Display a form to edit funder information
     %>
                 <form method="post" action="UpdateResearcherServlet">
-                    <input type="hidden" name="researcherId" value="<%= resarcherId %>">
+                    <input type="hidden" name="researcherId" value="<%= researcherId %>">
                     <label>fName:</label><br>
                     <input type="text" name="fName" value="<%= fName %>"><br>
                     <label>lName:</label><br>

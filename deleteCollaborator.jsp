@@ -8,15 +8,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Delete Funder Information</title>
+    <title>Delete Collaborator Information</title>
     <link rel="stylesheet" href="researcher.css"/>
 </head>
 <body>
-    <h1>Delete Funder Information</h1>
+    <h1>Delete Collaborator Information</h1>
     <%
-        // Get the funderId parameter from the request
-        String funderId = request.getParameter("funderId");
-        
+         // Get the funderId parameter from the request
+        String collaboratorId = request.getParameter("collaboratorId");
+                
         // JDBC URL and database credentials
         String jdbcUrl = "jdbc:mysql://localhost/rpms";
         String username = "root";
@@ -34,9 +34,9 @@
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Prepare SQL statement to delete the funder by ID
-            String sql = "DELETE FROM funders WHERE funderId=?";
+            String sql = "DELETE FROM collaborators WHERE collaboratorId=?";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, funderId);
+            statement.setString(1, collaboratorId);
 
             // Execute the query
             int rowsAffected = statement.executeUpdate();
@@ -44,11 +44,11 @@
             // Display success or error message
             if (rowsAffected > 0) {
     %>
-                <p class="message">Funder with ID <%= funderId %> deleted successfully.</p>
+                <p class="message">Collaborator with ID <%= collaboratorId %> deleted successfully.</p>
     <%
             } else {
     %>
-                <p class="message">Error deleting funder with ID <%= funderId %>.</p>
+                <p class="message">Error deleting Collaborator with ID <%= collaboratorId %>.</p>
     <%
             }
         } catch (Exception e) {
@@ -64,7 +64,6 @@
         }
     %>
     <br>
-    <a href="funders.jsp">Back to Home</a>
+    <a href="collaborators.jsp">Back to Home</a>
 </body>
 </html>
-

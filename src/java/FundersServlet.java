@@ -11,22 +11,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.RequestDispatcher;
 
-import org.mypackage.hello.FunderHandler;
 
 @WebServlet("/FundersServlet")
 public class FundersServlet extends HttpServlet {
-    private FunderHandler funderHandler;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // JDBC URL and database credentials
-        String jdbcUrl = "jdbc:mysql://localhost/funders";
+        String jdbcUrl = "jdbc:mysql://localhost/rpms";
         String username = "root";
-        String password = "";
+        String password = "admin";
 
         // Get parameters from the request
-        String funderId = request.getParameter("funderId");
         String name = request.getParameter("name");
         String status = request.getParameter("status");
         String country = request.getParameter("country");
@@ -44,19 +41,18 @@ public class FundersServlet extends HttpServlet {
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Prepare the SQL query (INSERT statement)
-            String sql = "insert into records(funderId, name, status, country, totalFunds) values (?, ?, ?, ?, ?)";
+            String sql = "insert into funders(name, status, country, totalFunds) values (?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, funderId);
-            statement.setString(2, name);
-            statement.setString(3, status);
-            statement.setString(4, country);
-            statement.setString(5, totalFunds);
+            statement.setString(1, name);
+            statement.setString(2, status);
+            statement.setString(3, country);
+            statement.setString(4, totalFunds);
 
             // Execute the INSERT statement
             int rowsAffected = statement.executeUpdate();
 
             // Prepare a separate SELECT query to fetch and display records
-            sql = "select * from records";
+            sql = "select * from funders";
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
 

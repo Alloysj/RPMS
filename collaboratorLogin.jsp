@@ -9,15 +9,15 @@
 <body>
     <h1>Collaborator Login</h1>
 
-    <form action="CollaboratorLoginServlet" method="post">
+    <form action="LoginServlet" method="post">
         <table>
             <tr>
                 <td>Collaborator ID:</td>
-                <td><input type="number" name="CID" required></td>
+                <td><input type="number" name="txtId" required></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type="password" name="txtpsw" required></td>
+                <td><input type="password" name="txtpwd" required></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="Login"></td>

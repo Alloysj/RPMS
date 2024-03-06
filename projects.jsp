@@ -1,5 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,22 +12,10 @@
         <%@include file="header.jsp" %>
 
         <h1>Projects</h1>
-        <%
-              String project_id = request.getParameter ("projectId");
-              String project_name = request.getParameter ("projectName");
-              String fundedAmt = request.getParameter ("amountFunded");
-              String funder_id = request.getParameter ("projectFunder");
-              String startdate = request.getParameter ("projectStartDate");
-              String enddate = request.getParameter ("projectEndDate");
-              String area = request.getParameter ("projectArea");
-                
-        %> 
-        <h1>Details Updated</h1>
         <table border="1">
 
             <thead>
                 <tr>
-                    <th> Project ID</th>
                     <th>Project Name</th>
                     <th>Funded Amount</th>
                     <th>Funder Name</th>
@@ -37,19 +26,43 @@
                 </tr>
             </thead>
             <tbody>
+                <%
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/rpms", "root", "admin");
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM projects");
 
+                while (rs.next()) {
+                    String projectName = rs.getString("name");
+                    Date startDate = rs.getDate("start_date");
+                    Date endDate = rs.getDate("end_date");
+                    String funder = rs.getString("project_funder");
+                    double fundedAmount = rs.getDouble("funded_amount");
+                    String field = rs.getString("field");
+
+                %>
                 <tr>
-                    <td><%= project_id %></td>
-                    <td><%= project_name %></td>
-                    <td><%= fundedAmt %></td>
-                    <td><%= funder_id%></td>
-                    <td><%= startdate %></td>
-                    <td><%= enddate %></td>
-                    <td><%= area %></td>
+                    <td><%= projectName %></td>
+                    <td><%= startDate %></td>
+                    <td><%= endDate %></td>
+                    <td><%= funder %></td>
+                    <td><%= fundedAmount %></td>
+                    <td><%= field %></td>
                 </tr>
+            <%
+        }
 
-            </tbody>
+        rs.close();
+        stmt.close();
+        conn.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+            %>
+          </tbody>
         </table>
+
     </body>
 </html>
 

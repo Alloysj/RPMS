@@ -10,6 +10,7 @@
     <h1>Welcome, researcher 31450</h1>
     
     <a href="editResearcher.jsp?researcherId=101">view and update your profile</a>
+    <a href="projectDetails.jsp" target="_blank">enter your project</a>
     <h2>Your Project</h2>
     <table border="1">
         <thead>
@@ -59,7 +60,7 @@
                 <td>STEM</td>
                 <td>Aloise mutune, Victor Wanguya</td>
                 <td>
-                    <a href="updateProject.jsp?projectId=100">Update</a>
+                    <a href="updateProject.jsp?projectId=3">Update</a>
                 </td>
             </tr>
         </tbody>
@@ -89,7 +90,7 @@
 
     <h2>Enter Project Expenses</h2>
     <form action="researcherLoggedin.jsp" method="post">
-        <input type="hidden" name="projectId" value="100">
+        <input type="hidden" name="projectId" value="3]">
         <table>
             <tr>
                 <td>Expense Name:</td>

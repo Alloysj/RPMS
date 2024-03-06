@@ -20,7 +20,7 @@
         // JDBC URL and database credentials
         String jdbcUrl = "jdbc:mysql://localhost/rpms";
         String username = "root";
-        String password = "";
+        String password = "admin";
 
         // Connection and PreparedStatement objects
         Connection connection = null;
@@ -36,7 +36,7 @@
             // Prepare SQL statement to delete the funder by ID
             String sql = "DELETE FROM researchers WHERE researcherId=?";
             statement = connection.prepareStatement(sql);
-            statement.setString(1, funderId);
+            statement.setString(1, researcherId);
 
             // Execute the query
             int rowsAffected = statement.executeUpdate();
@@ -44,11 +44,11 @@
             // Display success or error message
             if (rowsAffected > 0) {
     %>
-                <p class="message">Researcher with ID <%= funderId %> deleted successfully.</p>
+                <p class="message">Researcher with ID <%= researcherId %> deleted successfully.</p>
     <%
             } else {
     %>
-                <p class="message">Error deleting researcher with ID <%= funderId %>.</p>
+                <p class="message">Error deleting researcher with ID <%= researcherId %>.</p>
     <%
             }
         } catch (Exception e) {
