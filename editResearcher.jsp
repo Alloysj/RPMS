@@ -88,7 +88,7 @@
         }
     %>
     <br>
-    <a href="researchers.jsp">Back to Home</a>
+    <a href="researcherLoggedin.jsp">Back</a>
     
     <%-- Scriptlet to handle redirection after successful update --%>
     <%
