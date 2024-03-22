@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // JDBC URL and database credentials
@@ -42,16 +42,16 @@ public class LoginServlet extends HttpServlet {
                 String storedPassword = resultSet.getString("password");
                 if (storedPassword.equals(password)) {
                     // Successful login
-                    response.sendRedirect("researcherLoggedin.jsp");
+                    response.sendRedirect("profiles/researcherProfile.jsp");
                 } else {
                     // Incorrect password
                     request.setAttribute("errorMessage", "Incorrect password. Please try again.");
-                    request.getRequestDispatcher("researcherLogin.jsp").forward(request, response);
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
                 }
             } else {
                 // Researcher ID not found
                 request.setAttribute("errorMessage", "Researcher ID not found. Please check your ID.");
-                request.getRequestDispatcher("researcherLogin.jsp").forward(request, response);
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
             }
 
             // Clean up resources

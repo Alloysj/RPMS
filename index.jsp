@@ -41,7 +41,7 @@
             <ul class="circle-container">
                 <li><a href="researchers.jsp"><img src="Imgs/Research-PNG-File.png" width="300" height="300" alt="researchers"/> Researchers</a></li>
                 <li><a href="collaborators.jsp"><img src="Imgs/collaboration.png" width="300" height="300" alt="collaborators"/> Collaborators</a></li>
-                <li><a href="funders.jsp"><img src="Imgs/funders.jpg" width="300" height="300t" alt="funders"/> Funders</a></li>
+                <li><a href="funders.jsp"><img src="Imgs/funders.jpg" width="300" height="300" alt="funders"/> Funders</a></li>
                 <li><a href="projects.jsp"><img src="Imgs/project0.png" width="300" height="300" alt="projects"/> Projects</a></li>
                 <li><a href="login.jsp"><img src="Imgs/gate_unedited.jpg" width="300" height="300" alt="login"/> Login</a></li>
             </ul>

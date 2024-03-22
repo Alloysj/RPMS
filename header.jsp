@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="researcher.css" type="text/css"/>
+        <link rel="stylesheet" href="index.css" type="text/css"/>
 
         <title>RPMS</title>
         <meta charset="UTF-8">
@@ -64,7 +64,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropbtn">Login</a>
                             <div class="dropdown-content">
-                                <a href="researcherLogin.jsp">Researcher</a>
+                                <a href="login.jsp">Researcher</a>
                                 <a href="collaboratorLogin.jsp">Collaborator</a>
                                 <a href="funderLogin.jsp">Funder</a>
                             </div>
