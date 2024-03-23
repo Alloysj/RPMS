@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 public class ProjectManager {
     private DataSource dataSource;
@@ -59,5 +60,32 @@ public class ProjectManager {
             stmt.executeUpdate();
         }
     }
+    
+    // Retrieve projects by researcher ID
+   /* public List<Projects> getProjects(int researcherId) {
+        List<Projects> projects = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT name, start_date, end_date, amount_funded, field FROM projects WHERE researcherId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, researcherId);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    while (resultSet.next()) {
+                        int amount_funded = resultSet.getInt("amount_funded");
+                        String name = resultSet.getString("name");
+                        Date start_date = resultSet.getDate("start_date");
+                        Date end_date = resultSet.getDate("end_date");
+                        String field = resultSet.getString("field");
+                        projects.add(new Projects(name, amount_funded, start_date, end_date, field));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately (logging, error messages, etc.)
+        }
+
+        return projects;
+    }*/
 
 }

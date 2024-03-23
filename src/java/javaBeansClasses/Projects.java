@@ -7,6 +7,27 @@ import java.sql.Date;
  * @author user
  */
 public class Projects {
+
+    /**
+     * @param project_id the project_id to set
+     */
+    public void setProject_id(int project_id) {
+        this.project_id = project_id;
+    }
+
+    /**
+     * @param funderId the funderId to set
+     */
+    public void setFunderId(int funderId) {
+        this.funderId = funderId;
+    }
+
+    /**
+     * @param researcherId the researcherId to set
+     */
+    public void setResearcherId(int researcherId) {
+        this.researcherId = researcherId;
+    }
     
     private Date start_date;
     private Date end_date;
@@ -16,6 +37,10 @@ public class Projects {
     private String field;
     private int funderId;
     private int researcherId;
+
+   /* Projects(String name, int amount_funded, Date start_date, Date end_date, String field) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }*/
     
     
     public void Project(String name, Date start_date, Date end_date, String field, int funderId, int researcherId, int amount_funded, int project_id) {
@@ -23,10 +48,10 @@ public class Projects {
         this.start_date = start_date;
         this.end_date = end_date;
         this.field = field;
-        this.funderId = funderId;
-        this.researcherId = researcherId;
+        this.setFunderId(funderId);
+        this.setResearcherId(researcherId);
         this.amount_funded = amount_funded;
-        this.project_id = project_id;
+        this.setProject_id(project_id);
     }
     /**
      * @return the start_date
