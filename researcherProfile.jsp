@@ -58,5 +58,9 @@
         <form action="addProject.jsp">
             <input type="submit" value="Create New Project">
         </form>
+        
+        <form action="updateResearcher.jsp">
+            <input type="submit" value="Update Your details">
+        </form>
     </body>
 </html>
