@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import javax.naming.Context;
+//import jakarta.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -51,12 +51,12 @@ public class Login extends HttpServlet {
                             } else {
                                 // Incorrect password
                                 request.setAttribute("errorMessage", "Incorrect password. Please try again.");
-                                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                                response.sendRedirect("login.jsp");
                             }
                         } else {
                             // Researcher ID not found
                             request.setAttribute("errorMessage", "Researcher ID not found. Please check your ID.");
-                            request.getRequestDispatcher("Login.jsp").forward(request, response);
+                            response.sendRedirect("login.jsp");
                         }
                     }
                 }
