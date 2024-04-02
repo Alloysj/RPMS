@@ -16,6 +16,7 @@
      
     <%@include file="header.jsp" %>
     <title>Funder List</title>
+    <link rel="stylesheet" href="index.css"/>
     
 </head>
 <body>
@@ -37,5 +38,8 @@
         </tr>
         <% } %>
     </table>
+    <form action="addNewFunder.jsp">
+        <button type="submit">Add New Funder</button>
+    </form>
 </body>
 </html>
