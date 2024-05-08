@@ -9,58 +9,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            .dropdown {
-                position: relative;
-                display: inline-block;
+            .container{
+                min-height: 100px;
+                align-items: center;
             }
-
-            /* Dropdown button */
-            .dropbtn {
-                background-color: #ffffff;
-                color: #333333;
-                padding: 12px 16px;
-                border: none;
-                cursor: pointer;
-            }
-
-            /* Dropdown content */
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: #ffffff;
-                min-width: 160px;
-                z-index: 1;
-            }
-
-            /* Links inside the dropdown */
-            .dropdown-content a {
-                color: #333333;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-
-
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-
-
-            .dropdown-content a:hover {
-                background-color: #f2f2f2;
+            .right{
+                padding-top: 20px;
             }
         </style>
     </head>
+    <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+     response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+         response.setHeader("Expires", "0");
+    %>
     <body>
         <header>
             <div class="container">
-                <div class="left"><a href="index.jsp"><img src="Imgs/eu_logo-transparent.png" alt="eu_logo"/></a></div>
+                <div class="left"><a href="home.jsp"><img src="Imgs/eu_logos-transparent.png" alt="eu_logo"/></a></div>
                 <div class="right">
                     <ul class="header_links">
                         <li><a href="researchers.jsp">Researchers</a></li>
                         <li><a href="collaborators.jsp">Collaborators</a></li>
                         <li><a href="funders.jsp">Funders</a></li>
                         <li><a href="projects.jsp">Projects</a></li>
+<<<<<<< HEAD
                         <li class="dropdown">
                             <a href="#" class="dropbtn">Login</a>
                             <div class="dropdown-content">
@@ -69,9 +41,41 @@
                                 <a href="funderLogin.jsp">Funder</a>
                             </div>
                         </li>
+=======
+                        <li><a href="logout.jsp">Logout</a></li>
+>>>>>>> rpms1
                     </ul>
                 </div>
             </div>
         </header>
+        <script>
+            // JavaScript to identify and style the active link
+            /*** window.onload = function () {
+             var links = document.querySelectorAll('.header_links li a');
+             links.forEach(function (link) {
+             link.addEventListener('click', function () {
+             // Remove 'active' class from all links
+             links.forEach(function (item) {
+             item.classList.remove('active');
+             });
+             // Add 'active' class to the clicked link
+             this.classList.add('active');
+             });
+             });
+             }; ***/
+
+            const locationHref = window.location.href;
+            const buttons = document.querySelectorAll('a');
+
+
+            buttons.forEach(button => {
+                // trim to remove white spaces and convert to lowercase
+                const textContent = button.textContent.trim().toLowerCase();
+                if (locationHref.includes(textContent)) {
+                    button.style.backgroundColor = 'red';
+                }
+            });
+        </script>
+
     </body>
 </html>

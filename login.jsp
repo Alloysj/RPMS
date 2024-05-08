@@ -69,6 +69,17 @@
         </div>
         <form action="Login"  method = post>
             <table>
+<<<<<<< HEAD
+=======
+                <tr>
+                    <td class = "info">select user type:</td>
+                            <td><select>
+                                    <option>researcher</option>
+                                    <option>Funder</option>
+                                    <option>Administrator</option>
+                        </select></td>
+                </tr>
+>>>>>>> rpms1
                 <tr><td class = "info">Enter Id:</td><td> <input type ="number" name ="txtId" placeholder="Enter your researcher id" required></td></tr>
                 <tr><td class = "info">Enter password:</td><td> <input type ="password" name ="txtpwd" required></td></tr>
                 <tr><td><input type ="submit" value = "login"></td><td><input type = "reset"></td></tr>

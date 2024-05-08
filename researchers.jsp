@@ -51,6 +51,21 @@
 
     </head>
     <body>
+<<<<<<< HEAD
+=======
+        <% 
+        // Invalidate the session
+        if (session != null) {
+            session.removeAttribute("reseadcherId");
+            session.invalidate();
+        }
+        
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
+        %>
+>>>>>>> rpms1
         <h2>Researchers</h2>
         <table border="1">
             <tr>
@@ -129,4 +144,8 @@
             <input type="submit" value="Add researcher">
         </form>
     </body>
+<<<<<<< HEAD
+=======
+    <%@include file="footer.jsp" %>
+>>>>>>> rpms1
 </html>

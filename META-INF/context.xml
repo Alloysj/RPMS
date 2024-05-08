@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/RPMS">
+<<<<<<< HEAD
     <Resource name="jdbc/rpms1" auth="Container" type="javax.sql.DataSource"
               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
               username="root" password="admin"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/rpms1"/>
+=======
+    <Resource name="jdbc/rpms" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="root" password=""
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/rpms"/>
+>>>>>>> rpms1
 </Context>

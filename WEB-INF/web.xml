@@ -3,9 +3,57 @@
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Login</servlet-class>
+<<<<<<< HEAD
+=======
+    </servlet>
+    <servlet>
+        <servlet-name>FunderServlet</servlet-name>
+        <servlet-class>FunderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProjectServlet</servlet-name>
+        <servlet-class>ProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateResearcher</servlet-name>
+        <servlet-class>updateResearcher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addResearcher</servlet-name>
+        <servlet-class>ResearcherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CollaboratorServlet</servlet-name>
+        <servlet-class>CollaboratorServlet</servlet-class>
+>>>>>>> rpms1
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+<<<<<<< HEAD
+=======
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProjectServlet</servlet-name>
+        <url-pattern>/ProjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateResearcher</servlet-name>
+        <url-pattern>/updateResearcher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addResearcher</servlet-name>
+        <url-pattern>/addResearcher</url-pattern>
+        <url-pattern>/editResearcher</url-pattern>
+        <url-pattern>/deleteResearcher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FunderServlet</servlet-name>
+        <url-pattern>/FunderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CollaboratorServlet</servlet-name>
+        <url-pattern>/CollaboratorServlet</url-pattern>
+>>>>>>> rpms1
     </servlet-mapping>
 </web-app>
