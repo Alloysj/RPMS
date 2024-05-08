@@ -1,49 +1,57 @@
+<%@ page import="java.util.List" %>
+<%@ page import="javaBeansClasses.CollaboratorManager" %>
+<%@ page import="javaBeansClasses.Collaborators" %>
+
+<jsp:useBean id="rpms" scope="page" class="javaBeansClasses.Collaborators" />
+<jsp:useBean id="rpms1" scope="page" class="javaBeansClasses.CollaboratorManager" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+    List<Collaborators> collaborators = rpms1.getCollaborators();
+%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>RPMS</title>
-        <link rel="stylesheet" href="researchers.css"/>
-    </head>
-    <body>
-        <%@ include file="header.jsp" %>
-        <h1>collaborators!</h1>
-
-
-
-        <%
-              String fName = request.getParameter ("fName");
-              String lName = request.getParameter ("lName");
-              String project = request.getParameter ("project");
-                
-        %> 
-        <form action="#">
-            <label>Enter first name</label>
-            <input type="text" name="fName" />
-            <label>Enter last name</label>
-            <input type="text" name="lName" />
-            <label>Enter project name</label>
-            <input type="text" name="project" />
-            <input type="submit" value="submit">
-        </form>
-
-        <table border="1" cellpadding="1">
-            <thead>
-                <tr>
-                    <th>first name</th>
-                    <th>last name</th>
-                    <th>project</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><%= fName%></td>
-                    <td><%= lName%></td>
-                    <td><%= project%></td>
-                </tr>
-            </tbody>
-        </table>
-
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
+    <%@include file="header.jsp" %>
+    <title>Collaborator List</title>
+    
+</head>
+<body>
+    <% 
+        // Invalidate the session
+        if (session != null) {
+            session.removeAttribute("reseadcherId");
+            session.invalidate();
+        }
+        
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
+        %>
+        
+    <h2>Collaborators</h2>
+    <table border="1">
+        <tr>
+            <th>first name</th>
+            <th>last name</th>
+            <th>project</th>
+            <th>project_id</th>
+            
+            <!-- More headers if needed -->
+        </tr>
+        <% for (Collaborators collaborator : collaborators) { %>
+        <tr>
+            <td><%= collaborator.getfName() %></td>
+            <td><%= collaborator.getlName() %></td>
+            <td><%= collaborator.getProject() %></td>
+            <td><%= collaborator.getProject_id() %></td>
+        </tr>
+        <% } %>
+    </table>
+    
+    <a href="addCollaborator.jsp">add new collaborator</a>
+</body>
 </html>

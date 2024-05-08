@@ -64,9 +64,6 @@
         </style>
     </head>
     <body>
-        <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-response.setHeader("Expires", "0");%>
         <div align = center>
             <h1>Researcher login</h1>
         </div>
@@ -74,10 +71,10 @@ response.setHeader("Expires", "0");%>
             <table>
                 <tr>
                     <td class = "info">select user type:</td>
-                    <td><select>
-                            <option>researcher</option>
-                            <option>Funder</option>
-                            <option>Administrator</option>
+                            <td><select>
+                                    <option>researcher</option>
+                                    <option>Funder</option>
+                                    <option>Administrator</option>
                         </select></td>
                 </tr>
                 <tr><td class = "info">Enter Id:</td><td> <input type ="number" name ="txtId" placeholder="Enter your researcher id" required></td></tr>
@@ -85,5 +82,5 @@ response.setHeader("Expires", "0");%>
                 <tr><td><input type ="submit" value = "login"></td><td><input type = "reset"></td></tr>
             </table>
         </form>
-    </body>
+</body>
 </html>

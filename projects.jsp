@@ -1,55 +1,78 @@
+<%@ page import="java.util.List" %>
+<%@ page import="javaBeansClasses.ProjectManager" %>
+<%@ page import="javaBeansClasses.Projects" %>
+<%
+    String researcherId = (String) session.getAttribute("researcherId");
+%>
 
+<jsp:useBean id="rpms" scope="page" class="javaBeansClasses.ProjectManager" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>EEMS</title>
-        <link rel="stylesheet" href="researcher.css"/>
+        <%@include file="header.jsp" %>
+        <title>Projects List</title>
     </head>
     <body>
-        <%@include file="header.jsp" %>
-
-        <h1>Projects</h1>
-        <%
-              String project_id = request.getParameter ("projectId");
-              String project_name = request.getParameter ("projectName");
-              String fundedAmt = request.getParameter ("amountFunded");
-              String funder_id = request.getParameter ("projectFunder");
-              String startdate = request.getParameter ("projectStartDate");
-              String enddate = request.getParameter ("projectEndDate");
-              String area = request.getParameter ("projectArea");
-                
-        %> 
-        <h1>Details Updated</h1>
-        <table border="1">
-
-            <thead>
-                <tr>
-                    <th> Project ID</th>
-                    <th>Project Name</th>
-                    <th>Funded Amount</th>
-                    <th>Funder Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Area</th>
-
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <td><%= project_id %></td>
-                    <td><%= project_name %></td>
-                    <td><%= fundedAmt %></td>
-                    <td><%= funder_id%></td>
-                    <td><%= startdate %></td>
-                    <td><%= enddate %></td>
-                    <td><%= area %></td>
-                </tr>
-
-            </tbody>
+        <% 
+        // Invalidate the session
+        if (session != null) {
+            session.removeAttribute("reseadcherId");
+            session.invalidate();
+        }
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
+        %>
+        <h1>Your Project</h1>
+        <table>
+            <tr>
+                <th>Project Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Amount Funded</th>
+                <th>Field</th>
+                <th>Action</th>
+            </tr>
+            <% 
+                Projects loggedInUserProject = rpms.getProjectLoggedIn(researcherId);
+            %>
+            <tr>
+                <td><%= loggedInUserProject.getName() %></td>
+                <td><%= loggedInUserProject.getStart_date() %></td>
+                <td><%= loggedInUserProject.getEnd_date() %></td>
+                <td><%= loggedInUserProject.getAmount_funded() %></td>
+                <td><%= loggedInUserProject.getField() %></td>
+                <td><a href="editProject.jsp?project_id=<%= loggedInUserProject.getProject_id() %>">Edit</a></td>
+            </tr>
         </table>
+
+        <h2>Other Projects</h2>
+        <table border="1">
+            <tr>
+                <th>Project Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Amount Funded</th>
+                <th>Principal Investigator</th>
+                <th>Field</th>
+            </tr>
+            <% 
+                List<Projects> Projects = rpms.getProjects();
+                for (Projects project : Projects) { 
+            %>
+            <tr>
+                <td><%= project.getName() %></td>
+                <td><%= project.getStart_date() %></td>
+                <td><%= project.getEnd_date() %></td>
+                <td><%= project.getAmount_funded() %></td>
+                <td><%= project.getfName() %></td>
+                <td><%= project.getField() %></td>
+            </tr>
+            <% } %>
+        </table>
+        <a href="addProject.jsp">create new project</a>
     </body>
 </html>
-

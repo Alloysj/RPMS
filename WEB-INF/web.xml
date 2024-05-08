@@ -1,19 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
-        <servlet-name>FundersServlet</servlet-name>
-        <servlet-class>FundersServlet</servlet-class>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateFunderServlet</servlet-name>
-        <servlet-class>UpdateFunderServlet</servlet-class>
+        <servlet-name>FunderServlet</servlet-name>
+        <servlet-class>FunderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProjectServlet</servlet-name>
+        <servlet-class>ProjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateResearcher</servlet-name>
+        <servlet-class>updateResearcher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addResearcher</servlet-name>
+        <servlet-class>ResearcherServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CollaboratorServlet</servlet-name>
+        <servlet-class>CollaboratorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FundersServlet</servlet-name>
-        <url-pattern>/FundersServlet</url-pattern>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateFunderServlet</servlet-name>
-        <url-pattern>/UpdateFunderServlet</url-pattern>
+        <servlet-name>ProjectServlet</servlet-name>
+        <url-pattern>/ProjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateResearcher</servlet-name>
+        <url-pattern>/updateResearcher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addResearcher</servlet-name>
+        <url-pattern>/addResearcher</url-pattern>
+        <url-pattern>/editResearcher</url-pattern>
+        <url-pattern>/deleteResearcher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FunderServlet</servlet-name>
+        <url-pattern>/FunderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CollaboratorServlet</servlet-name>
+        <url-pattern>/CollaboratorServlet</url-pattern>
     </servlet-mapping>
 </web-app>

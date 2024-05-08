@@ -1,77 +1,56 @@
+<%@ page import="java.util.List" %>
+<%@ page import="javaBeansClasses.FunderManager" %>
+<%@ page import="javaBeansClasses.Funders" %>
+
+<jsp:useBean id="rpms" scope="page" class="javaBeansClasses.Funders" />
+<jsp:useBean id="rpms1" scope="page" class="javaBeansClasses.FunderManager" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
-<html lang="en">
+
+<%
+    List<Funders> funders = rpms1.getFunders();
+%>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Funder Information</title>
-<link rel="stylesheet" href="researcher.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
+    <%@include file="header.jsp" %>
+    <title>Funder List</title>
+    <link rel="stylesheet" href="index.css"/>
+    
 </head>
 <body>
-    <%@ include file="header.jsp" %>
-    <%-- Access data from request attributes --%>
-    <% String message = (String) request.getAttribute("message"); %>
-    <% ResultSet funderList = (ResultSet) request.getAttribute("funderList"); %>
-
-    <%-- Display message (if any) --%>
-    <% if (message != null) { %>
-    <p><%= message %></p>
-    <% } %>
-
-<div class="container">
-    <h1>Funder Information</h1>
-
-    <form method="post" action="FundersServlet">
-        <label for="funderId">FunderID:</label>
-        <input type="number" id="funderId" name="funderId"><br><br>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status"><br><br>
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="country"><br><br>
-        <label for="totalFunds">TotalFunds:</label>
-        <input type="number" id="totalFunds" name="totalFunds"><br><br>
-        <input type="submit" value="Submit">
-    </form>
-</div>
-<div>    
-    <table>
-        <thead>
-            <tr>
-                <th>Funder ID</th>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Country</th>
-                <th>Total Funds</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-           <% 
-        // Iterate through the ResultSet (if available) and display data
-        if (funderList != null) {
-          while (funderList.next()) {
-      %>
-      <tr>
-        <td><%= funderList.getString("funderId") %></td>
-        <td><%= funderList.getString("name") %></td>
-        <td><%= funderList.getString("status") %></td>
-        <td><%= funderList.getString("country") %></td>
-        <td><%= funderList.getString("totalFunds") %></td>
-        <td><a href="EditFunder.jsp?funderId=<%= funderList.getString("funderId") %>">Edit</a></td>
-        <td><a href="DeleteFunder.jsp?funderId=<%= funderList.getString("funderId") %>">Delete</a></td>
-      </tr>
-      <%
-          }
+    <% 
+        // Invalidate the session
+        if (session != null) {
+            session.removeAttribute("reseadcherId");
+            session.invalidate();
         }
-      %>
-      
-        </tbody>
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
+        %>
+    <h2>Funders</h2>
+    <table border="1">
+        <tr>
+            <th>funder name</th>
+            <th>status</th>
+            <th>Country</th>
+            <th>Total funds</th>
+            <!-- More headers if needed -->
+        </tr>
+        <% for (Funders funder : funders) { %>
+        <tr>
+            <td><%= funder.getName() %></td>
+            <td><%= funder.getStatus() %></td>
+            <td><%= funder.getCountry() %></td>
+            <td><%= funder.getTotalFunds() %></td>
+        </tr>
+        <% } %>
     </table>
-</div>
-
+    <form action="addNewFunder.jsp">
+        <button type="submit">Add New Funder</button>
+    </form>
 </body>
 </html>
